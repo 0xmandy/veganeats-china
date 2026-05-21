@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --brand-green: #2D6A4F;
+  --brand-green-light: #EAF4EE;
+  --brand-bg: #F7F5F0;
+}
+
+html {
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background-color: var(--brand-bg);
+  max-width: 480px;
+  margin: 0 auto;
+  min-height: 100svh;
+}
+
+/* Active tap state for all interactive elements */
+button:active, a:active {
+  opacity: 0.85;
+  transform: scale(0.98);
+  transition: transform 80ms, opacity 80ms;
+}
+
+@keyframes slide-up {
+  from { transform: translateY(100%); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+.animate-slide-up { animation: slide-up 0.2s ease-out; }
+
+.scrollbar-none::-webkit-scrollbar { display: none; }
+.scrollbar-none { -ms-overflow-style: none; scrollbar-width: none; }
