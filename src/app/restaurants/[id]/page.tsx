@@ -204,37 +204,6 @@ export default function RestaurantDetailPage() {
         )}
       </div>
 
-      {/* Menu Highlights */}
-      {dishes.length > 0 && (
-        <div className="mx-4 bg-white rounded-xl overflow-hidden mb-4">
-          <div className="px-4 pt-4 pb-2 border-b border-gray-50">
-            <h2 className="text-sm font-semibold text-gray-700">Menu Highlights</h2>
-          </div>
-          <ul>
-            {dishes.map((dish, i) => (
-              <li key={dish._id}
-                className={`px-4 py-3 flex items-start justify-between gap-3 ${i < dishes.length - 1 ? "border-b border-gray-50" : ""}`}>
-                <div className="flex-1 min-w-0">
-                  <p className="text-sm font-medium text-gray-800 leading-snug">{dish.name_en}</p>
-                  <p className="text-xs text-gray-400 mt-0.5">{dish.name_zh}</p>
-                  {dish.description_en && (
-                    <p className="text-xs text-gray-500 mt-1 leading-relaxed">{dish.description_en}</p>
-                  )}
-                  {dish.allergen_contains.length > 0 && (
-                    <p className="text-xs mt-1" style={{ color: "#B45309" }}>
-                      Contains: {dish.allergen_contains.join(", ")}
-                    </p>
-                  )}
-                </div>
-                {dish.price_rmb != null && dish.price_rmb > 0 && (
-                  <span className="text-sm font-medium text-gray-500 shrink-0">¥{dish.price_rmb}</span>
-                )}
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
-
       {/* Real reviews from 小红书 */}
       {restaurantReviews.length > 0 && (
         <div className="mx-4 bg-white rounded-xl overflow-hidden mb-4">
@@ -276,6 +245,37 @@ export default function RestaurantDetailPage() {
                 </li>
               );
             })}
+          </ul>
+        </div>
+      )}
+
+      {/* Menu Highlights */}
+      {dishes.length > 0 && (
+        <div className="mx-4 bg-white rounded-xl overflow-hidden mb-4">
+          <div className="px-4 pt-4 pb-2 border-b border-gray-50">
+            <h2 className="text-sm font-semibold text-gray-700">Menu Highlights</h2>
+          </div>
+          <ul>
+            {dishes.map((dish, i) => (
+              <li key={dish._id}
+                className={`px-4 py-3 flex items-start justify-between gap-3 ${i < dishes.length - 1 ? "border-b border-gray-50" : ""}`}>
+                <div className="flex-1 min-w-0">
+                  <p className="text-sm font-medium text-gray-800 leading-snug">{dish.name_en}</p>
+                  <p className="text-xs text-gray-400 mt-0.5">{dish.name_zh}</p>
+                  {dish.description_en && (
+                    <p className="text-xs text-gray-500 mt-1 leading-relaxed">{dish.description_en}</p>
+                  )}
+                  {dish.allergen_contains.length > 0 && (
+                    <p className="text-xs mt-1" style={{ color: "#B45309" }}>
+                      Contains: {dish.allergen_contains.join(", ")}
+                    </p>
+                  )}
+                </div>
+                {dish.price_rmb != null && dish.price_rmb > 0 && (
+                  <span className="text-sm font-medium text-gray-500 shrink-0">¥{dish.price_rmb}</span>
+                )}
+              </li>
+            ))}
           </ul>
         </div>
       )}
