@@ -464,7 +464,16 @@ export const ORDERING_PHRASES = {
 // ── Curated reviews from 小红书 (manually verified, non-sponsored) ──────────
 // 录入格式：把小红书评论原文粘贴给 Claude，Claude 翻译+格式化后加入此数组
 export const reviews: Review[] = [
-  // 评论陆续录入中——你找到一条，粘贴过来我处理一条
+  {
+    id: "xifa-r1",
+    restaurant_id: "xifa-shuyuan",
+    author_masked: "Ivy的素**",
+    reviewer_type: "vegan",
+    text_zh: "有时候看到颜值在线又好吃的素食店却空无一人，说不出的滋味，希望更多人发现这家宝藏小店。",
+    text_en: "Sometimes you find a beautiful, delicious vegetarian restaurant that's completely empty — it's a bittersweet feeling. Hope more people discover this hidden gem.",
+    source_url: "https://www.xiaohongshu.com/discovery/item/69f9f82d000000003502c539",
+    approx_date: "2026-05",
+  },
 ];
 
 export function getReviewsByRestaurantId(restaurantId: string): Review[] {
