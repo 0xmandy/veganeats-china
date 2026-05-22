@@ -121,10 +121,10 @@ export default function Home() {
       {/* Hero */}
       <div className="flex flex-col justify-center flex-1 py-10">
         <h1 className="text-3xl font-bold text-gray-900 leading-tight mb-1">
-          Nourish Well<br />in Shanghai
+          Eat Green<br />Shanghai
         </h1>
         <p className="text-gray-400 text-sm mb-6">
-          Wholesome food for every diet · near muShanghai
+          Healthy dining starts with knowing what's inside · near muShanghai
         </p>
 
         {/* Search bar */}
