@@ -4,6 +4,99 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { TYPE_CONFIG, DIET_CONFIG, type DietTag } from "@/lib/types";
 
+const MCP_CONFIG = `{
+  "mcpServers": {
+    "veganeats": {
+      "type": "http",
+      "url": "https://veganeats-china.vercel.app/api/mcp"
+    }
+  }
+}`;
+
+function UseWithClaude() {
+  const [copied, setCopied] = useState(false);
+  const [open, setOpen] = useState(false);
+
+  async function copyConfig() {
+    await navigator.clipboard.writeText(MCP_CONFIG);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  }
+
+  return (
+    <div className="rounded-xl overflow-hidden mb-6" style={{ border: "1.5px solid #E8E0FF", background: "#FAFBFF" }}>
+      {/* Header — always visible */}
+      <button
+        onClick={() => setOpen((v) => !v)}
+        className="w-full flex items-center justify-between px-4 py-3"
+      >
+        <div className="flex items-center gap-2">
+          <span className="text-base">🤖</span>
+          <span className="text-sm font-semibold text-gray-800">Use with Claude AI</span>
+          <span className="text-xs px-1.5 py-0.5 rounded-full font-medium"
+            style={{ background: "#EDE9FE", color: "#5B21B6" }}>MCP</span>
+        </div>
+        <span className="text-gray-400 text-sm">{open ? "▲" : "▼"}</span>
+      </button>
+
+      {/* Expandable body */}
+      {open && (
+        <div className="px-4 pb-4 space-y-3 border-t border-purple-50">
+          <p className="text-xs text-gray-500 pt-3 leading-relaxed">
+            Add this to <code className="bg-gray-100 px-1 rounded">~/.claude/settings.json</code> to
+            query restaurants directly from Claude Code or Claude.ai.
+          </p>
+
+          {/* Config block */}
+          <div className="relative">
+            <pre className="text-xs rounded-lg p-3 overflow-x-auto leading-relaxed"
+              style={{ background: "#1E1E2E", color: "#CDD6F4" }}>
+              {MCP_CONFIG}
+            </pre>
+            <button
+              onClick={copyConfig}
+              className="absolute top-2 right-2 text-xs px-2 py-1 rounded-md font-medium transition-all"
+              style={{
+                background: copied ? "#D4EDDA" : "rgba(255,255,255,0.15)",
+                color: copied ? "#155724" : "#CDD6F4",
+              }}
+            >
+              {copied ? "✓ Copied" : "Copy"}
+            </button>
+          </div>
+
+          {/* Example queries */}
+          <div>
+            <p className="text-xs font-medium text-gray-500 mb-1.5">Then ask Claude:</p>
+            <div className="space-y-1">
+              {[
+                "Find vegan noodles near muShanghai",
+                "Cheapest halal option walking distance?",
+                "What's open for breakfast near the venue?",
+              ].map((q) => (
+                <p key={q} className="text-xs px-3 py-1.5 rounded-lg"
+                  style={{ background: "#EDE9FE", color: "#5B21B6" }}>
+                  "{q}"
+                </p>
+              ))}
+            </div>
+          </div>
+
+          <a
+            href="/api/mcp"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block text-center text-xs py-2 rounded-lg font-medium"
+            style={{ background: "#7C3AED", color: "#fff" }}
+          >
+            View MCP Server Docs →
+          </a>
+        </div>
+      )}
+    </div>
+  );
+}
+
 const SUGGESTIONS = ["soup noodle", "tofu", "mushroom hot pot", "vegan dim sum", "halal noodles"];
 
 const QUICK_FILTERS: { key: DietTag | "all"; label: string; icon: string }[] = [
@@ -102,12 +195,15 @@ export default function Home() {
         </div>
 
         {/* Event badge */}
-        <div className="rounded-xl px-4 py-3 text-sm" style={{ background: "#EAF4EE", color: "#2D6A4F" }}>
+        <div className="rounded-xl px-4 py-3 text-sm mb-6" style={{ background: "#EAF4EE", color: "#2D6A4F" }}>
           <div className="flex items-center gap-2">
             <span>📅</span>
             <span><strong>May 10 – Jun 6, 2026</strong> · Alibaba Hongqiao Center</span>
           </div>
         </div>
+
+        {/* Use with Claude */}
+        <UseWithClaude />
       </div>
 
       <footer className="py-5 text-center text-xs text-gray-300">
