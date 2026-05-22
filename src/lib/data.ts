@@ -299,6 +299,30 @@ export const restaurants: Restaurant[] = [
     hours: { daily: "11:00–21:00" },
     verified: true, verified_date: "2026-05-21",
   },
+  {
+    _id: "shandong-jianbingr-lianghua",
+    slug: "shandong-jianbingr-lianghua",
+    name_en: "Shandong Grain Jianbing (Lianghua Mall)",
+    name_zh: "山东杂粮煎饼（虹桥良华购物广场店）",
+    restaurant_type: "veg_friendly",
+    diet_tags: ["veg_options"],
+    address_zh: "闵行区新虹街道申滨路990号第5幢101一层1F-01-6号（虹桥良华购物广场西2门旁）",
+    address_en: "West Gate 2, Hongqiao Lianghua Mall, 990 Shenbin Rd, Minhang",
+    lat: 31.210050, lng: 121.308100,
+    distance_from_venue_m: 749, walk_minutes: 9,
+    price_level: 1,
+    avg_price_rmb: 12,
+    rating: "3.9",
+    amap_id: "B0FFKT3D5Z",
+    hours: { daily: "04:30–22:00" },
+    veg_friendly_note: "Shandong-style savoury crêpes made fresh to order. Ask for a fully vegan set: choose grain batter, skip the egg, add lettuce and sauce only. The plain jianbing base is naturally vegan.",
+    photos: [
+      "https://store.is.autonavi.com/showpic/33bb00fccb938666d5114eaa2cf10941",
+      "http://store.is.autonavi.com/showpic/f37473eaab0c26d1deedd758a4f83c14",
+      "http://store.is.autonavi.com/showpic/ef11dffda2132462cc84839772663c5e",
+    ],
+    verified: true, verified_date: "2026-05-22",
+  },
 ];
 
 export const menuItems: MenuItem[] = [
@@ -414,6 +438,11 @@ export const menuItems: MenuItem[] = [
   { _id: "greenfriday-huiju-6", restaurant_id: "greenfriday-huiju", name_en: "Truffle Fries", name_zh: "松露薯条", description_en: "Crispy fries in truffle oil — ask for vegan cheese to make fully vegan.", price_rmb: 38, diet_tags: ["vegetarian"], allergen_free: [], allergen_contains: ["dairy"], display_order: 6 },
   { _id: "greenfriday-huiju-7", restaurant_id: "greenfriday-huiju", name_en: "Matcha Tiramisu", name_zh: "抹茶提拉米苏", description_en: "Matcha twist on the Italian classic — dairy-free available on request.", price_rmb: 45, diet_tags: ["vegetarian"], allergen_free: [], allergen_contains: ["dairy", "wheat", "egg"], display_order: 7 },
   { _id: "greenfriday-huiju-8", restaurant_id: "greenfriday-huiju", name_en: "Cold-pressed Seasonal Juice", name_zh: "冷压果蔬汁", description_en: "Daily seasonal juice — always vegan.", price_rmb: 28, diet_tags: ["vegan", "vegetarian"], allergen_free: [], allergen_contains: [], display_order: 8 },
+
+  // === 山东杂粮煎饼 Shandong Jianbing ===
+  { _id: "jianbing-1", restaurant_id: "shandong-jianbingr-lianghua", name_en: "Plain Grain Crêpe (Vegan)", name_zh: "纯素杂粮煎饼", description_en: "Grain batter crêpe with lettuce and hoisin sauce — ask to skip the egg for a fully vegan version.", price_rmb: 8, diet_tags: ["vegan", "veg_options"], allergen_free: [], allergen_contains: ["wheat", "sesame"], display_order: 1 },
+  { _id: "jianbing-2", restaurant_id: "shandong-jianbingr-lianghua", name_en: "Grain Crêpe with Egg", name_zh: "鸡蛋杂粮煎饼", description_en: "Classic version with one egg — vegetarian but not vegan.", price_rmb: 10, diet_tags: ["veg_options"], allergen_free: [], allergen_contains: ["wheat", "egg", "sesame"], display_order: 2 },
+  { _id: "jianbing-3", restaurant_id: "shandong-jianbingr-lianghua", name_en: "Crêpe with Soft Tofu", name_zh: "豆腐脑煎饼", description_en: "Crêpe served with silken tofu — filling and vegan-friendly.", price_rmb: 12, diet_tags: ["veg_options"], allergen_free: [], allergen_contains: ["wheat", "soy", "sesame"], display_order: 3 },
 ];
 
 export function getRestaurantBySlug(slug: string): Restaurant | undefined {
