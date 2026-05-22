@@ -175,6 +175,7 @@ export const restaurants: Restaurant[] = [
     distance_from_venue_m: 22, walk_minutes: 1,
     price_level: 1,
     hours: { daily: "Open 24 hours" },
+    photos: ["/banjiang.jpg"],
     veg_friendly_note: "Self-serve spicy pot. Pick your own vegetables for a fully vegan set — skip the meat section.",
     verified: true, verified_date: "2026-05-21",
   },
