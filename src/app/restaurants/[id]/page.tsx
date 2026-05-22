@@ -1,9 +1,37 @@
 "use client";
 import { useParams } from "next/navigation";
+import { useState } from "react";
 import Link from "next/link";
 import { getRestaurantBySlug, getMenuByRestaurantId } from "@/lib/data";
 import { DIET_CONFIG, TYPE_CONFIG } from "@/lib/types";
 import { MapEmbed } from "@/components/MapEmbed";
+
+function ShareButton({ name }: { name: string }) {
+  const [copied, setCopied] = useState(false);
+
+  async function handleShare() {
+    const url = window.location.href;
+    const text = `${name} — vegan & dietary-friendly restaurant near muShanghai 2026`;
+
+    if (navigator.share) {
+      await navigator.share({ title: name, text, url }).catch(() => {});
+    } else {
+      await navigator.clipboard.writeText(url);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    }
+  }
+
+  return (
+    <button
+      onClick={handleShare}
+      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-all active:scale-95"
+      style={{ background: copied ? "#D4EDDA" : "#F0F0F0", color: copied ? "#155724" : "#555" }}
+    >
+      {copied ? "✓ Link copied" : "⎙ Share"}
+    </button>
+  );
+}
 
 function HoursDisplay({ hours }: { hours: import("@/lib/types").Hours }) {
   if (hours.daily) {
@@ -81,8 +109,15 @@ export default function RestaurantDetailPage() {
 
       {/* Header */}
       <div className="px-4 pt-3 pb-4">
-        <h1 className="text-2xl font-bold text-gray-900 leading-tight">{r.name_en}</h1>
-        <p className="text-gray-400 text-base mt-0.5">{r.name_zh}</p>
+        <div className="flex items-start justify-between gap-2">
+          <div>
+            <h1 className="text-2xl font-bold text-gray-900 leading-tight">{r.name_en}</h1>
+            <p className="text-gray-400 text-base mt-0.5">{r.name_zh}</p>
+          </div>
+          <div className="mt-1 shrink-0">
+            <ShareButton name={r.name_en} />
+          </div>
+        </div>
         <div className="flex flex-wrap gap-1.5 mt-3">
           <span className="text-xs px-2 py-1 rounded-full bg-gray-100 text-gray-500">
             {typeInfo.icon} {typeInfo.label}
