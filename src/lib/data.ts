@@ -494,6 +494,58 @@ export const reviews: Review[] = [
     source_url: "https://www.xiaohongshu.com/explore/63a1c598000000001f00ec25",
     approx_date: "2022-12",
   },
+
+  // === 大象无隅 Daxiang Wuyu ===
+  {
+    id: "daxiang-r1",
+    restaurant_id: "daxiang-wuyu",
+    author_masked: "元江的**",
+    reviewer_type: "general",
+    text_zh: "米线不太好吃，但蛮喜欢牛油果寿司和海苔「藕」遇。玫瑰酿加冰后口感好了不少。整体值得打卡，和一般素食餐厅不同，这里也有荤菜。",
+    text_en: "The rice noodles were a letdown, but I really liked the avocado sushi and the seaweed & lotus root dish. The rose drink got much better with ice. Worth a visit — unlike most veg places, they also serve meat dishes here.",
+    source_url: "https://www.xiaohongshu.com/explore/65f935ff0000000013027588",
+    approx_date: "2024-03",
+  },
+  {
+    id: "daxiang-r2",
+    restaurant_id: "daxiang-wuyu",
+    author_masked: "mo**",
+    reviewer_type: "vegetarian",
+    text_zh: "去了两次。土豆泥烤杏鲍菇很不错，馄饨面吃起来很舒服。春天的味道口感好，送的奶冻甜甜的很好吃。豆浆汤豆腐49元感觉稍贵。",
+    text_en: "Been twice. The potato puree with baked king oyster mushroom was great, and the wonton noodles were comforting. The 'Spring Flavour' tofu was lovely, and the complimentary milk pudding was a sweet bonus. The tofu in soybean broth at ¥49 felt a touch pricey.",
+    source_url: "https://www.xiaohongshu.com/explore/68a1dabc000000001d02e1e3",
+    approx_date: "2025-08",
+  },
+  {
+    id: "daxiang-r3",
+    restaurant_id: "daxiang-wuyu",
+    author_masked: "薄荷气**",
+    reviewer_type: "vegetarian",
+    text_zh: "大象无隅是真的好吃，发现素食店菜名都起的很有美感，最爱吃春天的味道。",
+    text_en: "Genuinely delicious. Love how they give dishes such poetic names. My favourite is the 'Spring Flavour' dish.",
+    source_url: "https://www.xiaohongshu.com/explore/69a313530000000015038645",
+    approx_date: "2025-03",
+  },
+  {
+    id: "daxiang-r4",
+    restaurant_id: "daxiang-wuyu",
+    author_masked: "小严子**",
+    reviewer_type: "vegetarian",
+    text_zh: "在大众点评发现这家非营利性素食餐厅，菜品精致，有点单引导。定期给独居老人送爱心餐盒，还组织周末正念徒步和读书会。",
+    text_en: "A non-profit vegetarian restaurant with refined dishes and helpful menu guidance. They regularly deliver care meals to elderly people living alone and run weekend mindfulness hikes and book clubs. A restaurant with real heart.",
+    source_url: "https://www.xiaohongshu.com/explore/66e7cd52000000002603369e",
+    approx_date: "2024-09",
+  },
+  {
+    id: "daxiang-r5",
+    restaurant_id: "daxiang-wuyu",
+    author_masked: "欢**",
+    reviewer_type: "general",
+    text_zh: "清明逛蟠龙古镇，在蟠龙庵旁边发现了这家素食餐厅。椒麻羊肚菌、黑牛肝菌，清鲜开胃很健康，一家人吃得舒心又尽兴。",
+    text_en: "Stumbled upon this spot while exploring Panlong Ancient Town over the Qingming holiday. The spicy numbing morel mushrooms and black porcini were fresh, light, and healthy — the whole family left thoroughly satisfied.",
+    source_url: "https://www.xiaohongshu.com/explore/69d74927000000002103ab56",
+    approx_date: "2025-04",
+  },
 ];
 
 export function getReviewsByRestaurantId(restaurantId: string): Review[] {
