@@ -474,6 +474,16 @@ export const reviews: Review[] = [
     source_url: "https://www.xiaohongshu.com/discovery/item/69f9f82d000000003502c539",
     approx_date: "2026-05",
   },
+  {
+    id: "suxiangzhen-r1",
+    restaurant_id: "suxiangzhen",
+    author_masked: "食草**",
+    reviewer_type: "vegetarian",
+    text_zh: "荠菜馄饨22元，口感只能说是一般，不算是吃过的素馄饨里出彩的。还买了10个素包子和4个煎包，老板赠了一份馄饨汤。小店两桌加一个柜台，有素汉堡、包子、米饭、馄饨等。",
+    text_en: "The shepherd's purse wontons (¥22) were decent but not the most memorable veggie wontons I've had. Also grabbed 10 steamed buns and 4 pan-fried buns — the owner threw in a free wonton soup after I got a membership card. Tiny spot: two tables and a counter, serving veggie burgers, buns, rice bowls, and wontons.",
+    source_url: "https://www.xiaohongshu.com/explore/684511660000000021008fc4",
+    approx_date: "2025-06",
+  },
 ];
 
 export function getReviewsByRestaurantId(restaurantId: string): Review[] {
