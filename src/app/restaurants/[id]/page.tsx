@@ -2,7 +2,7 @@
 import { useParams } from "next/navigation";
 import { useState } from "react";
 import Link from "next/link";
-import { getRestaurantBySlug, getMenuByRestaurantId } from "@/lib/data";
+import { getRestaurantBySlug, getMenuByRestaurantId, getReviewsByRestaurantId } from "@/lib/data";
 import { DIET_CONFIG, TYPE_CONFIG } from "@/lib/types";
 import { MapEmbed } from "@/components/MapEmbed";
 
@@ -68,6 +68,7 @@ export default function RestaurantDetailPage() {
   const typeInfo = TYPE_CONFIG[r.restaurant_type];
   const hasMenuCard = ["dedicated_veg", "temple", "veg_friendly"].includes(r.restaurant_type);
   const dishes = getMenuByRestaurantId(r._id);
+  const restaurantReviews = getReviewsByRestaurantId(r._id);
   const photos = r.photos ?? [];
 
   return (
@@ -230,6 +231,51 @@ export default function RestaurantDetailPage() {
                 )}
               </li>
             ))}
+          </ul>
+        </div>
+      )}
+
+      {/* Real reviews from 小红书 */}
+      {restaurantReviews.length > 0 && (
+        <div className="mx-4 bg-white rounded-xl overflow-hidden mb-4">
+          <div className="px-4 pt-4 pb-2 border-b border-gray-50 flex items-center justify-between">
+            <h2 className="text-sm font-semibold text-gray-700">
+              Real Reviews
+              <span className="ml-1.5 text-xs font-normal text-gray-400">
+                ({restaurantReviews.length})
+              </span>
+            </h2>
+            <span className="text-xs px-2 py-0.5 rounded-full font-medium"
+              style={{ background: "#FFF0F3", color: "#E11D48" }}>
+              小红书
+            </span>
+          </div>
+          <ul>
+            {restaurantReviews.map((review, i) => {
+              const typeIcon = review.reviewer_type === "vegan" ? "🌱"
+                : review.reviewer_type === "vegetarian" ? "🥗"
+                : review.reviewer_type === "halal" ? "🕌" : "👤";
+              return (
+                <li key={review.id}
+                  className={`px-4 py-3 ${i < restaurantReviews.length - 1 ? "border-b border-gray-50" : ""}`}>
+                  <div className="flex items-center gap-1.5 mb-1.5">
+                    <span className="text-sm">{typeIcon}</span>
+                    <span className="text-xs font-medium text-gray-600">{review.author_masked}</span>
+                    {review.approx_date && (
+                      <span className="text-xs text-gray-300">· {review.approx_date}</span>
+                    )}
+                  </div>
+                  <p className="text-sm text-gray-700 leading-relaxed">"{review.text_en}"</p>
+                  {review.source_url && (
+                    <a href={review.source_url} target="_blank" rel="noopener noreferrer"
+                      className="inline-block mt-1.5 text-xs"
+                      style={{ color: "#E11D48" }}>
+                      View on 小红书 →
+                    </a>
+                  )}
+                </li>
+              );
+            })}
           </ul>
         </div>
       )}

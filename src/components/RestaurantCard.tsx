@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Restaurant } from "@/lib/types";
 import { DIET_CONFIG, TYPE_CONFIG } from "@/lib/types";
+import { getReviewCount } from "@/lib/data";
 
 function PriceDots({ level }: { level?: 1 | 2 | 3 }) {
   if (!level) return null;
@@ -11,6 +12,7 @@ export function RestaurantCard({ r }: { r: Restaurant }) {
   const typeInfo = TYPE_CONFIG[r.restaurant_type];
   const isVegFriendly = r.restaurant_type === "veg_friendly";
   const thumb = r.photos?.[0];
+  const reviewCount = getReviewCount(r._id);
 
   return (
     <Link href={`/restaurants/${r.slug}`} className="block">
@@ -62,6 +64,11 @@ export function RestaurantCard({ r }: { r: Restaurant }) {
           )}
           <PriceDots level={r.price_level} />
           {r.hours.daily && <span>🕐 {r.hours.daily}</span>}
+          {reviewCount > 0 && (
+            <span className="font-medium" style={{ color: "#E11D48" }}>
+              💬 {reviewCount} {reviewCount === 1 ? "review" : "reviews"}
+            </span>
+          )}
         </div>
 
         {/* Veg-friendly note */}

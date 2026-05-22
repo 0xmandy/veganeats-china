@@ -39,6 +39,17 @@ export interface Restaurant {
   active?: boolean;
 }
 
+export interface Review {
+  id: string;
+  restaurant_id: string;
+  author_masked: string;        // 打码昵称，如 "纯素小**"
+  reviewer_type: "vegan" | "vegetarian" | "halal" | "general";
+  text_zh: string;              // 原文摘录
+  text_en: string;              // 英文翻译（录入时人工翻译）
+  source_url?: string;          // 小红书原帖链接
+  approx_date?: string;         // 如 "2026-04"
+}
+
 export interface MenuItem {
   _id: string;
   restaurant_id: string;
@@ -49,6 +60,59 @@ export interface MenuItem {
   diet_tags: string[];
   allergen_free: string[];
   allergen_contains: string[];
+  display_order?: number;
+}
+
+export type ReviewPlatform = "xiaohongshu";
+export type ReviewSourceType = "post_body" | "comment";
+export type ReviewTopic =
+  | "veg_signal"
+  | "menu_item"
+  | "hours"
+  | "price"
+  | "queue"
+  | "environment"
+  | "service"
+  | "closure_risk"
+  | "reservation"
+  | "other";
+export type ReviewSentiment = "positive" | "negative" | "neutral" | "mixed";
+export type ReviewEvidenceStrength = "high" | "medium" | "low";
+
+export interface RestaurantReviewSource {
+  _id: string;
+  restaurant_slug: string;
+  platform: ReviewPlatform;
+  feed_id: string;
+  xsec_token: string;
+  title?: string;
+  author_name?: string;
+  published_at?: string;
+  like_count?: number;
+  comment_count?: number;
+  favorite_count?: number;
+  body_excerpt?: string;
+  raw_json?: string;
+  fetched_at: string;
+  active: boolean;
+}
+
+export interface RestaurantReviewSnippet {
+  _id: string;
+  restaurant_slug: string;
+  source_id: string;
+  snippet_text: string;
+  source_type: ReviewSourceType;
+  topic: ReviewTopic;
+  sentiment: ReviewSentiment;
+  evidence_strength: ReviewEvidenceStrength;
+  comment_author?: string;
+  comment_id?: string;
+  published_at?: string;
+  tags: string[];
+  approved: boolean;
+  approved_by?: string;
+  approved_at?: string;
   display_order?: number;
 }
 

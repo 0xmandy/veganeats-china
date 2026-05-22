@@ -1,4 +1,4 @@
-import type { Restaurant, MenuItem, DietTag } from "./types";
+import type { Restaurant, MenuItem, Review, DietTag } from "./types";
 
 // 静态数据源，Convex 接入后此文件作为 seed 数据
 export const VENUE = {
@@ -460,3 +460,17 @@ export const ORDERING_PHRASES = {
     { zh: "请问有没有不含猪肉和酒精的菜品推荐？", en: "Can you recommend dishes with no pork and no alcohol?" },
   ],
 };
+
+// ── Curated reviews from 小红书 (manually verified, non-sponsored) ──────────
+// 录入格式：把小红书评论原文粘贴给 Claude，Claude 翻译+格式化后加入此数组
+export const reviews: Review[] = [
+  // 评论陆续录入中——你找到一条，粘贴过来我处理一条
+];
+
+export function getReviewsByRestaurantId(restaurantId: string): Review[] {
+  return reviews.filter((r) => r.restaurant_id === restaurantId);
+}
+
+export function getReviewCount(restaurantId: string): number {
+  return reviews.filter((r) => r.restaurant_id === restaurantId).length;
+}
