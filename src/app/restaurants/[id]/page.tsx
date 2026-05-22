@@ -68,7 +68,8 @@ export default function RestaurantDetailPage() {
   const typeInfo = TYPE_CONFIG[r.restaurant_type];
   const hasMenuCard = ["dedicated_veg", "temple", "veg_friendly"].includes(r.restaurant_type);
   const dishes = getMenuByRestaurantId(r._id);
-  const restaurantReviews = getReviewsByRestaurantId(r._id);
+  const restaurantReviews = getReviewsByRestaurantId(r._id)
+    .sort((a, b) => (b.approx_date ?? "").localeCompare(a.approx_date ?? ""));
   const photos = r.photos ?? [];
 
   return (
