@@ -484,6 +484,16 @@ export const reviews: Review[] = [
     source_url: "https://www.xiaohongshu.com/explore/684511660000000021008fc4",
     approx_date: "2025-06",
   },
+  {
+    id: "suxiangzhen-r2",
+    restaurant_id: "suxiangzhen",
+    author_masked: "速来素**",
+    reviewer_type: "vegetarian",
+    text_zh: "在上海市中心居然有那么价廉物美的一家素餐厅，好好吃。",
+    text_en: "Can't believe there's such an affordable and delicious vegetarian restaurant right in central Shanghai. Absolutely worth it!",
+    source_url: "https://www.xiaohongshu.com/explore/63a1c598000000001f00ec25",
+    approx_date: "2022-12",
+  },
 ];
 
 export function getReviewsByRestaurantId(restaurantId: string): Review[] {
